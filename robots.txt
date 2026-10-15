@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elspaniard97.github.io/custom-ai-models/sitemap.xml
