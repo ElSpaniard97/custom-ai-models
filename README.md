@@ -30,9 +30,11 @@ Dollar figures live in the private business plan, not in this public repository.
 | `index.html` | Homepage: what it is, secure / private / managed |
 | `solutions.html` | The three tiers |
 | `security.html` | Security and privacy baseline |
-| `contact.html` | Request a quote; links to the main site's contact form |
+| `contact.html` | Quote request form (posts to the Worker below) |
+| `thankyou.html` | Shown after a successful quote request |
 | `style.css` | Lone Star ITS styles plus a "Private AI additions" section at the end |
-| `main.js` | Dark mode and mobile menu |
+| `main.js` | Dark mode, mobile menu, quote form submission |
+| `worker/` | Cloudflare Worker that receives quote requests |
 
 ## Run locally
 
@@ -43,6 +45,29 @@ python3 -m http.server 4180
 ## Deploy
 
 Settings → Pages → Deploy from a branch → `main` / root. No build step.
+
+## Quote form Worker
+
+The form on `contact.html` posts JSON to a Cloudflare Worker dedicated to this product:
+
+```
+https://lone-star-private-ai.saints-correa23.workers.dev/api/quote
+```
+
+The Worker accepts requests only from `https://elspaniard97.github.io`, rate-limits each IP to 5 requests a minute, drops honeypot submissions, and validates every field. It then opens a Jira Service Management ticket in project `LSAR` with the summary `Private AI quote: <company> — <team size>`. If `HUBSPOT_FORM_GUID` is set, it also logs the lead in HubSpot in the background.
+
+Deploy from the `worker/` folder:
+
+```bash
+cd worker
+npx wrangler login
+npx wrangler secret put JIRA_EMAIL
+npx wrangler secret put JIRA_API_TOKEN
+npx wrangler secret put HUBSPOT_FORM_GUID   # optional: a HubSpot form for Private AI leads
+npx wrangler deploy
+```
+
+If the deployed URL is not the one above, update `QUOTE_URL` in `main.js` and `connect-src` in each page's Content-Security-Policy. If the site moves to a custom domain, add that origin to `ALLOWED_ORIGINS` in `worker/worker.js`.
 
 ## Notes
 
