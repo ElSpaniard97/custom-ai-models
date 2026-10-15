@@ -598,3 +598,5 @@ body.dark-mode .compare tbody th { color: #dcefff; }
 }
 .check-list.narrow { max-width: 720px; margin: 20px auto 0; }
 .btn.spaced { margin-top: 20px; }
+.pricing.pricing-two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 900px; margin-left: auto; margin-right: auto; }
+@media (max-width: 900px) { .pricing.pricing-two { grid-template-columns: 1fr; } }

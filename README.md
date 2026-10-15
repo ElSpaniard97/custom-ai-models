@@ -13,7 +13,7 @@ Main company site: https://lonestar-its.com/ (source: `ecorrea-ceo/lone-star-its
 | `index.html` | Homepage: why private AI, how it works, use cases, industries |
 | `solutions.html` | Office / Business / Enterprise system tiers and comparison |
 | `security.html` | Security & privacy baseline included with every install |
-| `pricing.html` | Pricing structure: fixed setup fee, equipment over 1-4 years, separate monthly support (quote-based, no prices published) |
+| `pricing.html` | Pricing structure: Office AI as one all-in monthly payment over 1-4 years; Business and Enterprise purchased up front plus monthly support (quote-based, no prices published) |
 | `contact.html` | Contact details; the message button uses the main site's contact form |
 | `style.css` | Lone Star ITS styles plus a "Private AI additions" section at the end |
 | `main.js` | Dark mode and mobile menu |
