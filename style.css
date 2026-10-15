@@ -598,3 +598,4 @@ body.dark-mode .compare tbody th { color: #dcefff; }
 }
 .check-list.narrow { max-width: 720px; margin: 20px auto 0; }
 .btn.spaced { margin-top: 20px; }
+.plan .btn { margin-top: auto; }
